@@ -29,7 +29,20 @@
           </select>
         </div>
       </div>
+      <% if(locals.data){%>
+      <div id="bottom">
+        <div>
+          <h1>
+            1 <%= oldCurr.name %> is equivalent to <%=
+            data[oldCurr.id][newCurr.vs_currency] %> <%= newCurr.name %>
+          </h1>
+        </div>
+        <div><button formaction="/convert">Convert</button></div>
+      </div>
+
+      <% }else{ %>
       <div><button formaction="/convert">Convert</button></div>
+      <% } %>
     </form>
   </body>
 </html>

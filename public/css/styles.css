@@ -84,3 +84,13 @@ select option:hover {
   flex-direction: column;
   gap: 10px;
 }
+
+#bottom {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+#bottom button {
+  margin-top: 10px;
+}
