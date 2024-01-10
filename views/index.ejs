@@ -8,13 +8,13 @@
   </head>
   <body>
     <header>Check Crypto Currency Exchange Rate</header>
-    <form method="post">
+    <form method="POST">
       <div class="dropDowns">
         <div class="currencySelect">
           <label for="enteredCurrency">Select a Currency:</label>
           <select name="enteredCurrency" id="enteredCurrency">
             <% currencies.forEach((currency) => {%>
-            <option value="<%=currency.id  %>"><%= currency.name %></option>
+            <option value="<%=currency.id %>"><%= currency.name %></option>
             <% }) %>
           </select>
         </div>
@@ -22,7 +22,9 @@
           <label for="convertedCurrency">Convert to:</label>
           <select name="convertedCurrency" id="convertedCurrency">
             <% currencies.forEach((currency) => {%>
-            <option value="<%=currency.id  %>"><%= currency.name %></option>
+            <option value="<%=currency.vs_currency  %>">
+              <%= currency.name %>
+            </option>
             <% }) %>
           </select>
         </div>

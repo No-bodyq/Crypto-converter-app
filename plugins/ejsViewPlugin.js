@@ -9,5 +9,7 @@ module.exports = fp(function (app, opts, done) {
     templates: path.join(__dirname, "..", "views"),
   });
 
+  app.register(require("@fastify/formbody"));
+
   done();
 });
