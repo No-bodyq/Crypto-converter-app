@@ -1,3 +1,7 @@
+* {
+  font-family: "Poppins", sans-serif;
+}
+
 body {
   height: 91.5vh;
   background: linear-gradient(#332941, #3b3486);
@@ -10,33 +14,35 @@ header {
   font-size: 30px;
   color: #f8e559;
   margin-top: 50px;
+  font-weight: 800;
 }
 
 form {
   display: flex;
   justify-content: center;
   align-self: center;
-  margin-top: 160px;
+  margin-top: 40px;
   flex-direction: column;
 }
 
 form div {
   display: flex;
   justify-content: center;
+  align-items: center;
   color: #f8e559;
 }
 button {
-  margin-top: 160px;
+  margin-top: 50px;
   border: none;
   color: #f8e559;
-  background-color: #864af9;
+  background-color: #3b3486;
   width: 200px;
   height: 50px;
   border-radius: 30px 30px;
 }
 
 button:hover {
-  background-color: #3b3486;
+  background-color: #332941;
 }
 button:active {
   background-color: #332941;
@@ -47,16 +53,21 @@ button:active {
   text-align: center;
   justify-content: center;
   align-content: center;
-  gap: 500px;
+  flex-direction: column;
+  gap: 15px;
 }
 
 select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   width: 200px;
   height: 40px;
   background-color: #332941;
   border-radius: 30px;
   color: #f8e559;
+  padding-left: 10px;
 }
 
 select option {
@@ -81,8 +92,8 @@ select option:hover {
 
 .currencySelect {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  gap: 50px;
 }
 
 #bottom {
@@ -93,4 +104,53 @@ select option:hover {
 
 #bottom button {
   margin-top: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  font-weight: 300;
+}
+
+#convert-box {
+  background: linear-gradient(-45deg, #1e1b4b, #2e1065);
+  margin-top: 40px;
+  height: 400px;
+  width: 550px;
+  border: 5px solid linear-gradient(-45deg, #1e1b4b, #2e1065);
+  padding-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 2px black;
+}
+
+#arrow-container{
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #332941;
+    border: none;
+    border-radius: 10px;
+    margin: 50px 0px;
+
+}
+
+#arrow {
+  font-weight: 700;
+  font-size: 30px;
+  padding: 50px 0px;
+}
+.currencyValue {
+  border: none;
+  background-color: #332941;
+  border-radius: 20px;
+  height: 40px;
+  color: #f8e559;
+  padding-left: 20px;
+}
+
+.currencyValue:focus {
+  border-color: gray;
+  outline: none;
+  box-shadow: 0 0 2px gray;
 }

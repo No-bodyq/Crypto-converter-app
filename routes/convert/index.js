@@ -10,12 +10,14 @@ module.exports = async function (app, opts) {
     let newCurr = currencies.find(
       (currency) => currency.vs_currency === convertedCurr
     );
+    let value = parseInt(request.body.currencyValue) * data[`${enteredCurr}`][`${convertedCurr}`];
     try {
       return reply.view("index.ejs", {
         currencies: currencies,
         data: data,
         oldCurr: oldCurr,
         newCurr: newCurr,
+        value:value
       });
     } catch (err) {
       reply.code(500).send("Internal Server Error");

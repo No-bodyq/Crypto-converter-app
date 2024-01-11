@@ -33,6 +33,11 @@ let currencies = [
     name: "Bitcoin Cash",
     vs_currency: "bch",
   },
+  {
+    id: "tether",
+    name: "USDT",
+    vs_currency: "usd",
+  },
 ];
 
 module.exports = fp(async function (fastify, opts) {

@@ -5,44 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CryptoApp</title>
     <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>Check Crypto Currency Exchange Rate</header>
-    <form method="POST">
-      <div class="dropDowns">
-        <div class="currencySelect">
-          <label for="enteredCurrency">Select a Currency:</label>
-          <select name="enteredCurrency" id="enteredCurrency">
-            <% currencies.forEach((currency) => {%>
-            <option value="<%=currency.id %>"><%= currency.name %></option>
-            <% }) %>
-          </select>
+    <div class="container">
+      <div id="convert-box">
+        <form method="POST">
+          <div class="dropDowns">
+            <div class="currencySelect">
+              <input class="currencyValue" name="currencyValue" autocomplete="off" id="currencyValue" placeholder="0"/>
+              <select name="enteredCurrency" id="enteredCurrency">
+                <% currencies.forEach((currency) => {%>
+                <option value="<%=currency.id %>"><%= currency.name %></option>
+                <% }) %>
+              </select>
+            </div>
+            <div id="arrow-container">
+                <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#f8e559"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              id="arrow"
+            >
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <polyline points="19 12 12 19 5 12"></polyline>
+            </svg>
         </div>
-        <div class="currencySelect">
-          <label for="convertedCurrency">Convert to:</label>
-          <select name="convertedCurrency" id="convertedCurrency">
-            <% currencies.forEach((currency) => {%>
-            <option value="<%=currency.vs_currency  %>">
-              <%= currency.name %>
-            </option>
-            <% }) %>
-          </select>
-        </div>
+            
+            <div class="currencySelect">
+              <input class="currencyValue" disabled <% if(locals.value > 0){%> value="<%= value %><% } %>" placeholder="0"/>
+              <select name="convertedCurrency" id="convertedCurrency">
+                <% currencies.forEach((currency) => {%>
+                <option value="<%=currency.vs_currency  %>">
+                  <%= currency.name %>
+                </option>
+                <% }) %>
+              </select>
+            </div>
+          </div>
+          <div><button class="button" formaction="/convert">Convert</button></div>
+        </form>
       </div>
-      <% if(locals.data){%>
-      <div id="bottom">
-        <div>
-          <h1>
-            1 <%= oldCurr.name %> is equivalent to <%=
-            data[oldCurr.id][newCurr.vs_currency] %> <%= newCurr.name %>
-          </h1>
-        </div>
-        <div><button formaction="/convert">Convert</button></div>
-      </div>
-
-      <% }else{ %>
-      <div><button formaction="/convert">Convert</button></div>
-      <% } %>
-    </form>
+    </div>
   </body>
+  <script>
+    let enteredValue = document.querySelector("#currencyValue");
+    let button = document.querySelector("button");
+    button.addEventListener("click", () => {
+        if(isNaN(enteredValue.value)){
+            alert("Please enter a number");
+            location.reload();
+    }
+    })
+    
+  </script>
 </html>
