@@ -5,6 +5,7 @@ module.exports = async function (app, opts) {
     const enteredCurr = request.body["enteredCurrency"];
     const convertedCurr = request.body["convertedCurrency"];
     const data = await app.convert(enteredCurr, convertedCurr);
+    const ipAddress = request.ip;
     const currencies = await app.getCurrencies();
     const oldCurr = currencies.find((currency) => currency.id === enteredCurr);
     const newCurr = currencies.find(
@@ -21,7 +22,8 @@ module.exports = async function (app, opts) {
         newCurr: newCurr,
         value: value,
         convCurr:convertedCurr,
-        entCurr:enteredCurr
+        entCurr:enteredCurr,
+        ip:ipAddress
       });
     } catch (err) {
       reply.code(500).send("Internal Server Error");
