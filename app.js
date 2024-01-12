@@ -2,6 +2,7 @@
 
 const path = require("node:path");
 const AutoLoad = require("@fastify/autoload");
+const favicon = require('fastify-favicon');
 
 // Pass --options via CLI arguments in command to enable these options.
 const options = {};
@@ -9,9 +10,14 @@ const options = {};
 module.exports = async function (fastify, opts) {
   // Place here your custom code!
   fastify.register(require("@fastify/static"), {
-    root: path.join(__dirname, "public/css"),
-    prefix: "/css", // Adjust the prefix if needed
+    root: path.join(__dirname, "public"),
+    prefix: "/static",
   });
+  
+  // fastify.register(favicon,{
+  //   path: "./public/images",
+  // })
+
 
   // Do not touch the following lines
 

@@ -17,8 +17,13 @@ header {
   font-weight: 500;
 }
 
+img{
+    width: 25px;
+    height: 25px;
+}
+
 nav{
-    padding: 1px 0px 0px 100px;
+    padding: 1px 0px 0px 20px;
 }
 
 ul{
