@@ -13,62 +13,113 @@
     />
   </head>
   <body>
-    <header>Check Crypto Currency Exchange Rate</header>
+    <nav>
+
+        <ul>
+            <li><a href="/" onclick="handleNavigation(event)">Crypto</a></li>
+            <li><a href="/weather" onclick="handleNavigation(event)">Weather</a></li>
+        </ul>
+        
+    </nav>
+    <header>Crypto Swap</header>
     <div class="container">
       <div id="convert-box">
         <form method="POST">
           <div class="dropDowns">
             <div class="currencySelect">
-              <input class="currencyValue" name="currencyValue" autocomplete="off" id="currencyValue" placeholder="0"/>
+              <input
+                class="currencyValue"
+                name="currencyValue"
+                autocomplete="off"
+                id="currencyValue"
+                placeholder="0"
+                autofocus
+                required
+              />
               <select name="enteredCurrency" id="enteredCurrency">
                 <% currencies.forEach((currency) => {%>
-                <option value="<%=currency.id %>"><%= currency.name %></option>
+                <option value="<%=currency.id %>" id="<%=currency.id %>"><%= currency.name %></option>
                 <% }) %>
               </select>
             </div>
             <div id="arrow-container">
-                <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="#f8e559"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              id="arrow"
-            >
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <polyline points="19 12 12 19 5 12"></polyline>
-            </svg>
-        </div>
-            
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                id="arrow"
+              >
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+            </div>
+
             <div class="currencySelect">
-              <input class="currencyValue" disabled <% if(locals.value > 0){%> value="<%= value %><% } %>" placeholder="0"/>
+              <input class="currencyValue" disabled <% if(locals.value > 0){%>
+              value="<%= value %><% } %>" placeholder="0"/>
               <select name="convertedCurrency" id="convertedCurrency">
                 <% currencies.forEach((currency) => {%>
-                <option value="<%=currency.vs_currency  %>">
+                <option value="<%=currency.vs_currency  %>" id="<%= currency.vs_currency %>">
                   <%= currency.name %>
                 </option>
                 <% }) %>
               </select>
             </div>
           </div>
-          <div><button class="button" formaction="/convert">Convert</button></div>
+          <div>
+            <button class="button" formaction="/convert">Convert</button>
+          </div>
         </form>
       </div>
     </div>
   </body>
   <script>
     let enteredValue = document.querySelector("#currencyValue");
-    let button = document.querySelector("button");
-    button.addEventListener("click", () => {
-        if(isNaN(enteredValue.value)){
-            alert("Please enter a number");
-            location.reload();
-    }
-    })
+    const button = document.querySelector("button");
     
+    if("<%=locals.convCurr%>"){
+        const convCurr = document.getElementById("<%= locals.convCurr%>")
+        const entCurr = document.getElementById("<%= locals.entCurr%>")
+        convCurr.setAttribute("selected", true);
+        entCurr.setAttribute("selected", true)
+
+    }
+
+    button.addEventListener("click", (e) => {
+        // document.getElementById("currencyValue").value = "<%= locals.value %>";
+        if (isNaN(enteredValue.value)) {
+            alert("Please enter a valid number");
+            e.preventDefault();
+        }
+    });
+    const currentPageUrl = window.location.href;
+
+    const navLinks = document.querySelectorAll('nav a');
+
+    if(currentPageUrl === "http://127.0.0.1:3000/convert"){
+        navLinks[0].classList.add('highlight')
+    }
+
+    navLinks.forEach(link => {
+        if (link.href === currentPageUrl) {
+        link.classList.add('highlight');
+        }
+    });
+
+    function handleNavigation(event) {
+    const currentPageUrl = window.location.href;
+
+    const targetHref = event.target.href;
+
+    if (targetHref === currentPageUrl) {
+      event.preventDefault();
+    }
+}
   </script>
 </html>

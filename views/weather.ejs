@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherApp</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/" onclick="handleNavigation(event)">Crypto</a></li>
+            <li><a href="/weather" onclick="handleNavigation(event)">Weather</a></li>
+        </ul>
+    </nav>
+</body>
+<script>
+    const currentPageUrl = window.location.href;
+
+    const navLinks = document.querySelectorAll('nav a');
+
+    navLinks.forEach(link => {
+        if (link.href === currentPageUrl) {
+        link.classList.add('highlight');
+        }
+    });
+
+function handleNavigation(event) {
+const currentPageUrl = window.location.href;
+
+const targetHref = event.target.href;
+
+if (targetHref === currentPageUrl) {
+  event.preventDefault();
+}
+}
+</script>
+</html>

@@ -14,6 +14,11 @@ let currencies = [
     vs_currency: "eth",
   },
   {
+    id: "tether",
+    name: "USDT",
+    vs_currency: "usd",
+  },
+  {
     id: "binancecoin",
     name: "BNB",
     vs_currency: "bnb",
@@ -32,11 +37,6 @@ let currencies = [
     id: "bitcoin-cash",
     name: "Bitcoin Cash",
     vs_currency: "bch",
-  },
-  {
-    id: "tether",
-    name: "USDT",
-    vs_currency: "usd",
   },
 ];
 
